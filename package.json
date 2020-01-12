@@ -1,11 +1,14 @@
 {
   "main": "node_modules/expo/AppEntry.js",
+  "license": "MIT",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "lint": "./node_modules/eslint/bin/eslint.js .",
+    "validate": "npm run lint"
   },
   "dependencies": {
     "@apollo/client": "^3.0.0-beta.21",
@@ -22,6 +25,9 @@
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "babel-preset-expo": "~8.0.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-native": "^3.8.1",
     "json2graphql": "^0.1.4"
   },
   "private": true

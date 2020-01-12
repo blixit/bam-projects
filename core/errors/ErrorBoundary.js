@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 class ErrorBoundary extends React.Component  {
   constructor(props) {
@@ -29,6 +30,10 @@ class ErrorBoundary extends React.Component  {
     return this.props.children;
   }
 }
+
+ErrorBoundary.propTypes = {
+  children: PropTypes.object
+};
 
 export const withErrorBoundary = Component => () => (
   <ErrorBoundary>

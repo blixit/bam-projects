@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, Linking, Alert, Button } from 'react-native';
+import PropTypes from 'prop-types';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
 import IconButton from '../buttons/IconButton';
 
 const openLink = (url) => {
@@ -19,19 +19,11 @@ const ProjectItem = (props) => {
     id,
     name,
     description,
-    full_name,
     git_url,
     owner,
     isprivate,
-    node_id,
     stargazers_count
   } = props;
-
-  const myIcon = <Icon name="rocket" size={30} color="#900" />;
-
-  if (isprivate) {
-    return null;
-  }
 
   return (
     <View style={styles.projectItem} key={id}>
@@ -39,23 +31,29 @@ const ProjectItem = (props) => {
       <Text style={styles.projectOwner}>By {owner}</Text>
       <Text style={{ display: description ? 'flex' : 'none' }}>{description}</Text>
       <View style={styles.githubContainer}>
-        <Icon
+        <IconButton
           name="star"
-          style={styles.buttonIcon}>
-          <Text style={styles.buttonText}> {stargazers_count}</Text>
-        </Icon>
-        <Icon
+          text={String(stargazers_count)}
+        />
+        <IconButton
           name="github"
           onPress={() => openLink(git_url)}
-          style={styles.buttonIcon}>
-          <Text style={styles.buttonText}> github</Text>
-        </Icon>
+          text='Github'
+        />
       </View>
     </View>
   )
 };
 
-export default ProjectItem;
+ProjectItem.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+  description: PropTypes.string,
+  git_url: PropTypes.string,
+  owner: PropTypes.string,
+  isprivate: PropTypes.bool,
+  stargazers_count: PropTypes.number
+};
 
 const styles = StyleSheet.create({
   projectItem: {
@@ -86,3 +84,5 @@ const styles = StyleSheet.create({
     fontSize: 16
   }
 });
+
+export default ProjectItem;

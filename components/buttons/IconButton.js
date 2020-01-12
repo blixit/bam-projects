@@ -1,15 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, StatusBar, Button } from 'react-native';
+import PropTypes from 'prop-types';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default (props) => {
+const IconButton = (props) => {
   const { name, text, onClick, styleIcon, styleText } = props;
   const _styleIcon = {
     ...styles.buttonIcon,
     ...styleIcon
   };
-  console.log(_styleIcon);
   
   const _styleText = {
     ...styles.buttonText,
@@ -25,6 +25,13 @@ export default (props) => {
   );
 }
 
+IconButton.propTypes = {
+  name: PropTypes.string,
+  text: PropTypes.string,
+  onClick: PropTypes.func,
+  styleIcon: PropTypes.object,
+  styleText: PropTypes.object
+};
 
 const styles = StyleSheet.create({
   buttonIcon: {
@@ -36,3 +43,5 @@ const styles = StyleSheet.create({
     fontSize: 16
   }
 });
+
+export default IconButton;
